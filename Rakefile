@@ -1,4 +1,4 @@
 require 'sinatra/asset_pipeline/task'
-require './app'
+require './config.ru'
 
 Sinatra::AssetPipeline::Task.define! App
