@@ -13,6 +13,10 @@ class App < Sinatra::Base
   get '/' do
     slim :main
   end
+
+  get '/api/v1/*' do
+    HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{params[:splat].first}").to_json
+  end
 end
 
 run App

@@ -5,5 +5,6 @@ gem 'sass'
 gem 'puma'
 gem 'coffee-script'
 gem 'pry'
+gem 'httparty'
 
 gem 'sinatra-asset-pipeline'
