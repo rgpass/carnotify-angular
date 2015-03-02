@@ -12,4 +12,5 @@
 //
 //= require jquery.min
 //= require ../lib/angular/angular.js
+//= require ng-app/ng-app.js
 //= require_tree .
