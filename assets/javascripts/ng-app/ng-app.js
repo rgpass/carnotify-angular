@@ -1,30 +1,21 @@
 angular
   .module('myApp', [
-    'ui.router',
-    'ct.ui.router.extras'
+    'ui.router'//,
+    // 'ct.ui.router.extras'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
         .state('donations', {
           url: '/',
-          // template: '<h1>Donation</h1>' // Working!
-          templateUrl: 'partials/donations', // Got it to work by creating views/donations.erb and a Sinatra route for it
-          // templateUrl: 'donations.html'//,
+          templateUrl: 'partials/donations',
           controller: 'myCtrl'
         })
         .state('blah', {
           url: '/blah',
-          // template: '<h1>Blah</h1>' // Working!
-          templateUrl: 'partials/blah', // Got it to work by creating views/donations.erb and a Sinatra route for it
-          // templateUrl: 'donations.html'//,
+          templateUrl: 'partials/blah',
           controller: 'myCtrl'
         })
-      // $routeProvider.
-      //   when("/", {
-      //     templateUrl: "donations.html"//,
-      //     // controller: "BoardCtrl"
-      //   })
 
       // default fall back route
       $urlRouterProvider.otherwise('/');
