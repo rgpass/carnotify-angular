@@ -1,4 +1,4 @@
 angular.module('myApp')
-.controller('myCtrl', ['$scope', function ($scope) {
-  $scope.query = 'blah';
+.controller('myCtrl', ['$scope', 'myService', function ($scope, myService) {
+  $scope.query = myService.query;
 }]);
