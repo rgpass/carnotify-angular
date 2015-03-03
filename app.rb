@@ -17,4 +17,8 @@ class App < Sinatra::Base
   get '/api/v1/*' do
     HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{params[:splat].first}").to_json
   end
+
+  get '/*' do
+    erb :"angular_partials/#{params[:splat].first}"
+  end
 end

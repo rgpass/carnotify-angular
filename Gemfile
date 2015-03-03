@@ -6,5 +6,6 @@ gem 'puma'
 gem 'coffee-script'
 gem 'pry'
 gem 'httparty'
+gem 'eco'
 
 gem 'sinatra-asset-pipeline'

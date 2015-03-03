@@ -12,5 +12,10 @@
 //
 //= require jquery.min
 //= require ../lib/angular/angular.js
+//= require ../lib/angular-ui-router/release/angular-ui-router.min.js
+//= require ../lib/angular-ui-router.stateHelper/statehelper.min.js
+//= require ../lib/ui-router-extras/release/ct-ui-router-extras.min.js
+//= require ../lib/angular-route/angular-route.min.js
+//= require_tree ../templates
 //= require ng-app/ng-app.js
 //= require_tree .
