@@ -9,10 +9,6 @@ header, header h1 {
   margin-top: -1.2em;
 }
 
-header {
-  height: 6em;
-}
-
 #cd-timeline {
   margin-top: 2em;
 }
@@ -22,17 +18,46 @@ header {
 }
 
 .header {
+  height: 4.7em;
   margin-top: 1.2em;
   margin-bottom: 2em;
   text-align: center;
   font-size: 3em;
-  padding: 0em;
+  padding: 0 1em;
   color: black;
 }
 
 .header-sub-title {
   margin-top: .5em;
   font-size: 1.2em;
+}
+
+.header-mileage {
+  margin-top: 2.7em;
+}
+.cd-timeline-content {
+  background-color: #F0F0F0;
+  padding: 0px;
+  box-shadow: 0 2px 5px #d7e4ed;
+  border-radius: 4px;
+}
+
+.cd-timeline-content .cd-read-more {
+  background-color: #008cba;
+  border-color: #0079a1;
+  padding-top: -5px;
+  float: right;
+}
+
+.cd-timeline-content .cd-date {
+  font-size: 1.5em
+}
+
+.cd-picture h2, .cd-movie h2, .cd-location h2 {
+  text-align: center;
+  font-size: 2em;
+  color:white;
+  margin-top: 30%;
 }
 
 .panel {
@@ -45,31 +70,31 @@ header {
   margin: 0px;
 }
 
+.panel-primary {
+  border-color: transparent;
+  cursor: context-menu;
+}
+
 .panel-heading {
   padding: 10px;
 }
-.cd-timeline-content {
-  background-color: #E0E0E0;
-  padding: 0px;
-  box-shadow: 0 1px 0 #d7e4ed;
-  border-radius: 4px;
+
+.panel-title {
+  font-size: 1.7em;
 }
 
-.cd-timeline-content .cd-read-more {
-  background-color: #008cba;
-  border-color: #0079a1;
+.panel-body {
+  font-size: 1.33em;
 }
 
-.cd-timeline-content .cd-read-more {
-  padding-top: -5px;
+.multiples-right {
   float: right;
+  margin-right: 43%;
+  font-size: 2em;
 }
 
-.cd-timeline-img .cd-picture {
-  text-align: center;
-}
 
-.bubble-text {
-  padding-top: 1.4em;
-  text-align: center;
-}
+
+
+
+
