@@ -1,28 +1,31 @@
-h1 I want to maintain my...
+.text-center
+  h1 I want to save money on my...
+  br
 
-/ form.form-horizontal
-/   fieldset
-/     .form-group
-/       label.col-lg-2.control-label for="select"  Selects
-/       .col-lg-10
-/         select#select.form-control
-/           option 1
-/           option 2
-/           option 3
-/           option 4
-/           option 5
+  select.btn.btn-primary.btn-lg ng-model='selectedYear' ng-change='updateMakes()'
+    option disabled='' year
+    option ng-repeat='year in years'
+      | {{year}}
+  br
+  br
 
-select.btn.btn-primary.btn-lg ng-model='year' ng-change='updateMakes()'
-  option disabled='' year
-  option ng-repeat='year in years'
-    | {{year}}
+  select.btn.btn-primary.btn-lg ng-model='selectedMake' ng-change='updateModels()'
+    option disabled='' make
+    option ng-repeat='make in makes'
+      | {{make}}
+  br
+  br
 
-select.btn.btn-primary.btn-lg ng-model='make'
-  option disabled='' make
-  option ng-repeat='make in makes'
-    | {{make}}
+  select.btn.btn-primary.btn-lg ng-model='selectedModel'
+    option disabled='' model
+    option ng-repeat='model in models' value='{{model.id}}'
+      | {{model.name}}
+  br
+  br
+  br
 
-select.btn.btn-primary.btn-lg ng-model='model'
-  option disabled='' model
-  option ng-repeat='model in models'
-    | {{model}}
+  a.btn.btn-primary.btn-lg ng-disabled='selectedModel == "model"' href='/#/car/{{selectedModel}}'
+    | Show me my maintenace report
+
+  h2
+    | Model's id: {{selectedModel}}
