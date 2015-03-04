@@ -6,9 +6,10 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-        .state('home', {
+        .state('carSelect', {
           url: '/',
-          templateUrl: 'partials/home'
+          templateUrl: 'partials/car_select',
+          controller: 'carSelectCtrl'
         })
         .state('donations', {
           url: '/donations',
