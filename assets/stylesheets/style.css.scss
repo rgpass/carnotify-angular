@@ -132,6 +132,12 @@ Main components
   &.cd-location {
     background: #f0ca45;
   };
+  h2 {
+    text-align: center;
+    font-size: 2em;
+    color:white;
+    margin-top: 30%;
+  };
 }
 
 @media only screen and (min-width: 1170px) {
@@ -458,5 +464,20 @@ Main components
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
     transform: translateX(0);
+  }
+}
+
+/* -------------------------------- 
+
+Customization
+
+-------------------------------- */
+.cd-timeline-content {
+  background-color: #F0F0F0;
+  padding: 0px;
+  box-shadow: 0 2px 5px #d7e4ed;
+  border-radius: 4px;
+  .cd-date {
+    font-size: 1.5em;
   }
 }

@@ -3,22 +3,8 @@ body {
   font-size: 100%;
 }
 
-.cd-timeline-content {
-  background-color: #F0F0F0;
-  padding: 0px;
-  box-shadow: 0 2px 5px #d7e4ed;
-  border-radius: 4px;
-}
-
-.cd-timeline-content .cd-date {
-  font-size: 1.5em
-}
-
-.cd-timeline-img h2 {
-  text-align: center;
-  font-size: 2em;
-  color:white;
-  margin-top: 30%;
+.container-fluid a {
+  text-decoration: none;
 }
 
 .panel {
@@ -41,8 +27,4 @@ body {
 
 .panel-body {
   font-size: 1.33em;
-}
-
-.container-fluid a {
-  text-decoration: none;
 }
