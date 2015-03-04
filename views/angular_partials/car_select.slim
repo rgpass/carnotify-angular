@@ -1,0 +1,28 @@
+h1 I want to maintain my...
+
+/ form.form-horizontal
+/   fieldset
+/     .form-group
+/       label.col-lg-2.control-label for="select"  Selects
+/       .col-lg-10
+/         select#select.form-control
+/           option 1
+/           option 2
+/           option 3
+/           option 4
+/           option 5
+
+select.btn.btn-primary.btn-lg ng-model='year' ng-change='updateMakes()'
+  option disabled='' year
+  option ng-repeat='year in years'
+    | {{year}}
+
+select.btn.btn-primary.btn-lg ng-model='make'
+  option disabled='' make
+  option ng-repeat='make in makes'
+    | {{make}}
+
+select.btn.btn-primary.btn-lg ng-model='model'
+  option disabled='' model
+  option ng-repeat='model in models'
+    | {{model}}
