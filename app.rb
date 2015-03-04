@@ -19,7 +19,7 @@ class App < Sinatra::Base
   end
 
   get '/partials/*' do
-    erb :"angular_partials/#{params[:splat].first}"
+    slim :"angular_partials/#{params[:splat].first}", layout: false
   end
 
   not_found do

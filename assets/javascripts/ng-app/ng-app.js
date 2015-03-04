@@ -6,15 +6,18 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-        .state('donations', {
+        .state('home', {
           url: '/',
-          templateUrl: 'partials/donations',
-          controller: 'myCtrl'
+          templateUrl: 'partials/home'
         })
-        .state('blah', {
-          url: '/blah',
-          templateUrl: 'partials/blah',
-          controller: 'myCtrl'
+        .state('donations', {
+          url: '/donations',
+          templateUrl: 'partials/donations'
+        })
+        .state('maintenanceReport', {
+          url: '/report',
+          templateUrl: 'partials/maintenance_report',
+          controller: 'maintenanceReportCtrl'
         })
 
       // default fall back route
