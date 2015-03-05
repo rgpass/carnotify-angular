@@ -5,7 +5,7 @@ angular.module('myApp')
 
   this.grabMakesModels = function(year) {
     params = { year: year };
-    return $http.get(makesUrl + '?year=' + year);
+    return $http.get(makesUrl, { params: params });
   };
 
   // this.grabModels = function(make) {
