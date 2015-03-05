@@ -14,13 +14,18 @@ angular.module('myApp')
     $scope.selectedModel = 'model';
     $scope.makes = [];
     $scope.models = [];
-    $scope.makes = carSelectService.grabMakes($scope.selectedYear);
+    $scope.makes = carSelectService.grabMakesModels($scope.selectedYear)
+      .success(function(data) {
+        $scope.makes = data;
+      });
   };
 
-  $scope.updateModels = function() {
+  $scope.updateModels = function(makeNiceName) {
     $scope.selectedModel = 'model';
-    $scope.models = [];
-    $scope.models = carSelectService.grabModels($scope.make);
+    var make = _.find($scope.makes, function(make) {
+      return make.niceName == makeNiceName;
+    });
+    $scope.models = make.models;
   };
 
 }]);

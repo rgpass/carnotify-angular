@@ -15,7 +15,9 @@ class App < Sinatra::Base
   end
 
   get '/api/v1/*' do
-    HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{params[:splat].first}").to_json
+    end_point = params[:splat].first
+    query_params = URI.encode_www_form(params)
+    HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{end_point}?#{query_params}").to_json
   end
 
   get '/partials/*' do

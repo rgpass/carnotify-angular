@@ -9,23 +9,23 @@
   br
   br
 
-  select.btn.btn-primary.btn-lg ng-model='selectedMake' ng-change='updateModels()'
+  select.btn.btn-primary.btn-lg ng-model='selectedMake' ng-change='updateModels(selectedMake)'
     option disabled='' make
-    option ng-repeat='make in makes'
-      | {{make}}
+    option ng-repeat='make in makes' value='{{make.niceName}}'
+      | {{make.name}}
   br
   br
 
   select.btn.btn-primary.btn-lg ng-model='selectedModel'
     option disabled='' model
-    option ng-repeat='model in models' value='{{model.id}}'
+    option ng-repeat='model in models' value='{{model.niceName}}'
       | {{model.name}}
   br
   br
   br
 
-  a.btn.btn-primary.btn-lg ng-disabled='selectedModel == "model"' href='/#/car/{{selectedModel}}'
-    | Show me my maintenace report
+  a.btn.btn-primary.btn-lg ng-disabled='selectedModel == "model"' href='/#/car/{{selectedMake}}/{{selectedModel}}/{{selectedYear}}'
+    | Show me my maintenance report
 
   h2
     | Model's id: {{selectedModel}}
