@@ -1,7 +1,7 @@
 angular.module('myApp')
 .controller('maintenanceReportCtrl',
-['$scope', 'maintenanceReportService', '$stateParams', '$location',
-function ($scope, maintenanceReportService, $stateParams, $location) {
+['$scope', 'maintenanceReportService', '$stateParams', '$location', 'navigationService',
+function ($scope, maintenanceReportService, $stateParams, $location, navigationService) {
 
   alignVariables();
 
@@ -40,6 +40,9 @@ function ($scope, maintenanceReportService, $stateParams, $location) {
     maintenanceReportService.paramsYear = $stateParams.year;
     maintenanceReportService.makeNiceName = $stateParams.makeNiceName;
     maintenanceReportService.modelNiceName = $stateParams.modelNiceName;
+    navigationService.year = $stateParams.year;
+    navigationService.make = $stateParams.makeNiceName;
+    navigationService.model = $stateParams.modelNiceName;
   }
 
   function isSameSearch() {

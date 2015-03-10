@@ -1,7 +1,7 @@
 angular.module('myApp')
 .controller('carSelectCtrl',
-  ['$scope', 'carSelectService',
-  function ($scope, carSelectService) {
+  ['$scope', 'carSelectService', 'navigationService',
+  function ($scope, carSelectService, navigationService) {
 
   // DEFAULTS AND RANGES
   $scope.years = _.range(1990, 2016).reverse();

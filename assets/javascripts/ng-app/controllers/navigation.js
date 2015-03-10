@@ -2,9 +2,15 @@ angular.module('myApp')
 .controller('navigationCtrl',
   ['$scope', 'navigationService',
   function ($scope, navigationService) {
+    
+    $scope.$watchCollection(navServiceFn, function(newVal, oldVal) {
+      $scope.year = newVal.year;
+      $scope.make = navigationService.make;
+      $scope.model = navigationService.model;
+    })
 
-    $scope.year = 2002;
-    $scope.make = 'honda';
-    $scope.model = 'accord';
+    function navServiceFn() {
+      return navigationService;
+    }
 
 }]);
