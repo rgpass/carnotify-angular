@@ -1,29 +1,59 @@
 angular.module('myApp')
 .controller('maintenanceReportCtrl',
-['$scope', 'maintenanceReportService', '$stateParams',
-function ($scope, maintenanceReportService, $stateParams) {
+['$scope', 'maintenanceReportService', '$stateParams', '$location',
+function ($scope, maintenanceReportService, $stateParams, $location) {
 
   alignVariables();
 
+  if (isMissingParams()) {
+    $location.path('/')
+  }
+
+  if (!$scope.report) {
+    maintenanceReportService
+      .getReport($stateParams.year, $stateParams.makeNiceName, $stateParams.modelNiceName)
+      .success(alignVariables)
+      .success(storeSearchParams)
+  } else if (!isSameSearch()) {
+    clearVariables();
+    maintenanceReportService
+      .getReport($stateParams.year, $stateParams.makeNiceName, $stateParams.modelNiceName)
+      .success(alignVariables)
+      .success(storeSearchParams)
+  }
+
+
+  /* Utility functions */
   function alignVariables() {
     $scope.year = maintenanceReportService.year;
     $scope.make = maintenanceReportService.make;
     $scope.model = maintenanceReportService.model;
     $scope.modelYearId = maintenanceReportService.id;
-    $scope.report = maintenanceReportService.maintenance_list;
+    $scope.report = maintenanceReportService.report;
   }
-  
-  $scope.paramsYear = $stateParams.year;
-  $scope.makeNiceName = $stateParams.makeNiceName;
-  $scope.modelNiceName = $stateParams.modelNiceName;
 
-  if (!$scope.report) {
-    maintenanceReportService.getReport($scope.paramsYear, $scope.makeNiceName, $scope.modelNiceName).success(function(data) {
-      $scope.year = data.year;
-      $scope.make = data.make;
-      $scope.model = data.model;
-      $scope.modelYearId = data.id;
-      $scope.report = data.maintenance_list
-    })
+  function isMissingParams() {
+    return !$stateParams.year || $stateParams.makeNiceName == "" || $stateParams.modelNiceName == "";
+  }
+
+  function storeSearchParams() {
+    maintenanceReportService.paramsYear = $stateParams.year;
+    maintenanceReportService.makeNiceName = $stateParams.makeNiceName;
+    maintenanceReportService.modelNiceName = $stateParams.modelNiceName;
+  }
+
+  function isSameSearch() {
+    var isSameYear = $stateParams.year == maintenanceReportService.year;
+    var isSameMake = $stateParams.makeNiceName == maintenanceReportService.makeNiceName;
+    var isSameModel = $stateParams.modelNiceName == maintenanceReportService.modelNiceName;
+    return isSameYear && isSameMake && isSameModel;
+  }
+
+  function clearVariables() {
+    $scope.year = null;
+    $scope.make = null;
+    $scope.model = null;
+    $scope.modelYearId = null;
+    $scope.report = null;
   }
 }]);
