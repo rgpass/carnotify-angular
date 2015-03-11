@@ -8,8 +8,4 @@ angular.module('myApp')
     return $http.get(makesUrl, { params: params });
   };
 
-  // this.grabModels = function(make) {
-  //   return [{ name: 'Accord', id: 100000402 }, 
-  //           { name: 'CRV',    id: 100000403 }];
-  // };
 }]);

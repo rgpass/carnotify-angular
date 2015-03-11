@@ -16,7 +16,7 @@ angular
           templateUrl: 'partials/donations'
         })
         .state('maintenanceReport', {
-          url: '/car/honda/accord/2002',
+          url: '/report/:makeNiceName/:modelNiceName/:year',
           templateUrl: 'partials/maintenance_report',
           controller: 'maintenanceReportCtrl'
         })
