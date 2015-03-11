@@ -7,7 +7,7 @@ angular
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
         .state('carSelect', {
-          url: '/',
+          url: '/select/',
           templateUrl: 'partials/car_select',
           controller: 'carSelectCtrl'
         })

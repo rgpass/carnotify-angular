@@ -8,4 +8,7 @@ gem 'pry'
 gem 'httparty'
 gem 'eco'
 
+# To enable cookies
+gem 'sinatra-contrib'
+
 gem 'sinatra-asset-pipeline'
