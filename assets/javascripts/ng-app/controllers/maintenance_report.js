@@ -6,7 +6,8 @@ function ($scope, maintenanceReportService, $stateParams, $location, navigationS
   alignVariables();
 
   if (isMissingParams()) {
-    $location.path('/')
+    // Forwarding to '/' wouldn't work. Need to force this route to get to work.
+    $location.path('/report/');
   }
 
   if (!$scope.report) {
