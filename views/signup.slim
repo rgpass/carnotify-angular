@@ -1,1 +1,18 @@
 h1 Sign Up
+
+.row
+  .col-sm-8.col-sm-offset-2
+    form accept-charset="UTF-8" action="/signup" class="new_user" id="new_user" method="post"
+      label class="control-label" for="user_name"
+        | Name
+      input autofocus="autofocus" class="form-control input-sm" id="user_name" name="user[name]" type="text"
+      label class="control-label" for="user_email"
+        | Email
+      input class="form-control input-sm" id="user_email" name="user[email]" type="text"
+      label class="control-label" for="user_password"
+        | Password
+      input class="form-control input-sm" id="user_password" name="user[password]" type="password"
+      label class="control-label" for="user_password_confirmation"
+        | Confirm password
+      input class="form-control input-sm" id="user_password_confirmation" name="user[password_confirmation]" type="password"
+      input class="btn btn-large btn-primary" name="commit" type="submit" value="Create my account"

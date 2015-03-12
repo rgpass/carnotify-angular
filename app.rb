@@ -14,7 +14,12 @@ class App < Sinatra::Base
   helpers Sinatra::Cookies
 
   get '/' do
-    slim :main
+    slim :signup
+  end
+
+  post '/signup' do
+    api_response = HTTParty.post('https://carnotify-api.herokuapp.com/api/v1/users', query: params)
+    binding.pry
   end
 
   get '/app/' do
@@ -29,7 +34,7 @@ class App < Sinatra::Base
     HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{end_point}?#{query_params}").to_json
   end
 
-  get '/partials/*' do
+  get '/app/partials/*' do
     slim :"angular_partials/#{params[:splat].first}", layout: false
   end
 
