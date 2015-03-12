@@ -14,7 +14,14 @@ class App < Sinatra::Base
   helpers Sinatra::Cookies
 
   get '/' do
-    slim :welcome
+    # TODO: Set this to find current_user on load
+    if cookies['remember_token']
+      @is_signed_in = true
+      slim :main
+    else
+      @is_signed_in = false
+      slim :welcome
+    end
   end
 
   get '/signup' do
@@ -26,7 +33,7 @@ class App < Sinatra::Base
     remember_token = api_response.headers['set-cookie'].split(';')[1].split('remember_token=').last
     expiration = Time.parse(api_response.headers['set-cookie'].split(';').last.split('=').last)
     response.set_cookie "remember_token", {:value => remember_token, :expires => (expiration)}
-    redirect '/app/#/select'
+    redirect '/#/select'
   end
 
   get '/signin' do
@@ -38,7 +45,7 @@ class App < Sinatra::Base
     remember_token = api_response.headers['set-cookie'].split(';')[1].split('remember_token=').last
     expiration = Time.parse(api_response.headers['set-cookie'].split(';').last.split('=').last)
     response.set_cookie "remember_token", {:value => remember_token, :expires => (expiration)}
-    redirect '/app/#/select'
+    redirect '/#/select'
   end
 
 
@@ -48,23 +55,31 @@ class App < Sinatra::Base
     redirect '/'
   end
 
-  get '/app/' do
-    redirect '/' unless cookies['remember_token']
-    slim :main
+  # get '/app/' do
+  #   # Uncomment when ready to implement AuthN
+  #   # redirect '/' unless cookies['remember_token']
+  #   slim :main
+  # end
+
+  get '/donations' do
+    slim :"angular_partials/donations"
   end
+
+  # get '/team' do
+  #   slim :'angular_partials/team'
+  # end
 
   get '/api/v1/*' do
-    # TODO: Discuss if we want this -- will make it so no
-    # features without being signed in
-    redirect '/' unless cookies['remember_token']
+    # TODO: Discuss if we want this -- will make it so no features without being signed in
+    # Uncomment when ready to implement AuthN
+    # redirect '/' unless cookies['remember_token']
     end_point = params[:splat].first
     query_params = URI.encode_www_form(params)
-    binding.pry
     HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{end_point}?#{query_params}", cookies: { remember_token: cookies['remember_token'] }).to_json
-    # If bad cookie/error/unauthorized, need to alert user with a flash message
+    # If bad cookie/error/unauthorized, need to redirect to root and alert user with a flash message
   end
 
-  get '/app/partials/*' do
+  get '/partials/*' do
     slim :"angular_partials/#{params[:splat].first}", layout: false
   end
 

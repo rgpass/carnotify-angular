@@ -6,13 +6,27 @@ nav.navbar class='navbar navbar-inverse' ng-controller='navigationCtrl'
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href='/app/#/select' CarNotify
+      - if @is_signed_in
+        a.navbar-brand ui-sref='root' CarNotify
+      - else
+        a.navbar-brand href='/' CarNotify
     .collapse class='navbar-collapse' id='bs-example-navbar-collapse-1'
-      ul.nav.navbar-nav
-        li
-          a ui-sref='carSelect' Select Car
-        li
-          a ui-sref='maintenanceReport({year: year, makeNiceName: make, modelNiceName: model})' Maintenance Report
+      - if @is_signed_in
+        ul.nav.navbar-nav
+          li
+            a ui-sref='carSelect' Select Car
+          li
+            a ui-sref='maintenanceReport({year: year, makeNiceName: make, modelNiceName: model})' Maintenance Report
       ul.nav class='navbar-nav navbar-right'
-        li
-          a ui-sref='donations' Donations
+        - if @is_signed_in
+          li
+            a ui-sref='donations' Donations
+          li
+            a href='/signout' Sign Out
+        - else
+          li
+            a href='/s/donations' Donations
+          li
+            a href='/signin' Sign In
+          li
+            a href='/signup' Sign Up

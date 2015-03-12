@@ -6,7 +6,7 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
       $stateProvider
-        .state('home', { // TODO: Clean this up with default route
+        .state('root', { // TODO: Clean this up with default route to user's cars
           url: '/',
           templateUrl: 'partials/car_select',
           controller: 'carSelectCtrl'
