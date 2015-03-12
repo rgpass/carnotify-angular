@@ -1,0 +1,12 @@
+h1 Sign In
+
+.row
+  .col-sm-8.col-sm-offset-2
+    form accept-charset="UTF-8" action="/signin" method="post"
+      label class="control-label" for="session_email"
+        | Email
+      input class="form-control input-sm" id="session_email" name="session[email]" type="text"
+      label class="control-label" for="session_password"
+        | Password
+      input class="form-control input-sm" id="session_password" name="session[password]" type="password"
+      input class="btn btn-large btn-primary" name="commit" type="submit" value="Sign In"

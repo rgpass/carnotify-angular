@@ -19,10 +19,26 @@ class App < Sinatra::Base
 
   post '/signup' do
     api_response = HTTParty.post('https://carnotify-api.herokuapp.com/api/v1/users', query: params)
-    binding.pry
+    remember_token = api_response.headers['set-cookie'].split(';')[1].split('remember_token=').last
+    expiration = Time.parse(api_response.headers['set-cookie'].split(';').last.split('=').last)
+    response.set_cookie "remember_token", {:value => remember_token, :expires => (expiration)}
+    redirect '/app/#/select'
+  end
+
+  get '/signin' do
+    slim :signin
+  end
+
+  post '/signin' do
+    api_response = HTTParty.post('https://carnotify-api.herokuapp.com/api/v1/sessions', query: params)
+    remember_token = api_response.headers['set-cookie'].split(';')[1].split('remember_token=').last
+    expiration = Time.parse(api_response.headers['set-cookie'].split(';').last.split('=').last)
+    response.set_cookie "remember_token", {:value => remember_token, :expires => (expiration)}
+    redirect '/app/#/select'
   end
 
   get '/app/' do
+    # If no cookie, redirect to /signin
     slim :main
   end
 
