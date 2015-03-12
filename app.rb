@@ -14,6 +14,10 @@ class App < Sinatra::Base
   helpers Sinatra::Cookies
 
   get '/' do
+    slim :welcome
+  end
+
+  get '/signup' do
     slim :signup
   end
 
@@ -37,17 +41,27 @@ class App < Sinatra::Base
     redirect '/app/#/select'
   end
 
+
+  get '/signout' do
+    HTTParty.delete('https://carnotify-api.herokuapp.com/api/v1/signout', cookies: { remember_token: cookies['remember_token'] })
+    response.delete_cookie 'remember_token'
+    redirect '/'
+  end
+
   get '/app/' do
-    # If no cookie, redirect to /signin
+    redirect '/' unless cookies['remember_token']
     slim :main
   end
 
-  # response.set_cookie "remember", {:value => 'abcd1234', :expires => (Time.now + 52*7*24*60*60)}
-
   get '/api/v1/*' do
+    # TODO: Discuss if we want this -- will make it so no
+    # features without being signed in
+    redirect '/' unless cookies['remember_token']
     end_point = params[:splat].first
     query_params = URI.encode_www_form(params)
-    HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{end_point}?#{query_params}").to_json
+    binding.pry
+    HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{end_point}?#{query_params}", cookies: { remember_token: cookies['remember_token'] }).to_json
+    # If bad cookie/error/unauthorized, need to alert user with a flash message
   end
 
   get '/app/partials/*' do
