@@ -10,18 +10,18 @@
         | {{year}} {{make}} {{model}}
       h4 Mileage
 
-  section#cd-timeline.cd-container
-    .cd-timeline-block ng-repeat="interval in report"
-      .cd-timeline-img.cd-picture
-        h2
-          | {{interval[0].mileage}}K
-      .cd-timeline-content
-        .panel-group.tips id="#accordion{{""+interval[0].mileage}}"
-          .panel.panel-primary ng-repeat="item in interval[0].items"
-            .panel-heading ng-href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
-              h4.panel-title
-                span href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
-                  | {{item.action}} ({{item.item}})
-            .panel-collapse.collapse id='collapse{{""+item.id}}'
-              .panel-body
-                | {{item.itemDescription}}
+    section#cd-timeline.cd-container
+      .cd-timeline-block ng-repeat="interval in report"
+        .cd-timeline-img.cd-picture
+          h2
+            | {{interval[0].mileage}}K
+        .cd-timeline-content
+          .panel-group.tips id="#accordion{{""+interval[0].mileage}}"
+            .panel.panel-primary ng-repeat="item in interval[0].items"
+              .panel-heading ng-href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
+                h4.panel-title
+                  span href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
+                    | {{item.action}} ({{item.item}})
+              .panel-collapse.collapse id='collapse{{""+item.id}}'
+                .panel-body
+                  | {{item.itemDescription}}
