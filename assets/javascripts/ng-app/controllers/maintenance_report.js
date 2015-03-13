@@ -1,7 +1,7 @@
 angular.module('myApp')
 .controller('maintenanceReportCtrl',
-['$scope', '$rootScope', 'maintenanceReportService', '$stateParams', '$location', 'navigationService',
-function ($scope, $rootScope, maintenanceReportService, $stateParams, $location, navigationService) {
+['$scope', '$rootScope', 'maintenanceReportService', '$stateParams', '$location', 'navigationService', '$sce',
+function ($scope, $rootScope, maintenanceReportService, $stateParams, $location, navigationService, $sce) {
 
   alignVariables();
 
@@ -23,6 +23,23 @@ function ($scope, $rootScope, maintenanceReportService, $stateParams, $location,
       .success(storeSearchParams)
   }
 
+  $scope.actionAndPart = function (item) {
+    return item.action + " " + item.item.toLowerCase();
+  };
+
+  $scope.smartText = function(item) {
+    var smartDescription  = item.itemDescription
+                              .replace(/engine/g, '<a href="https://www.youtube.com/watch?v=1p91gmhlPNo" target="_blank">engine</a>')
+                              .replace(/rear-wheel\sdrive/g, '<a href="https://www.youtube.com/watch?v=mWtFkEwF61I" target="_blank">rear-wheel drive</a>')
+                              .replace(/front-wheel\sdrive/g, '<a href="https://www.youtube.com/watch?v=WwMYGF2avrs" target="_blank">front-wheel drive</a>')
+                              .replace(/catalytic\sconverters/g, '<a href="https://www.youtube.com/watch?v=HADOcrcMikA" target="_blank">catalytic converters</a>')
+                              .replace(/mufflers/g, '<a href="https://www.youtube.com/watch?v=30JJSXWKIC8" target="_blank">mufflers</a>')
+                              .replace(/differential/g, '<a href="https://youtu.be/K4JhruinbWc?t=1m50s" target="_blank">differential</a>')
+                              .replace(/radiator/g, '<a href="https://www.youtube.com/watch?v=Q56k37FsRcA" target="_blank">radiator</a>')
+                              
+    // Trusting the source.
+    return $sce.trustAsHtml(smartDescription);
+  } 
 
   /* Utility functions */
   function alignVariables() {
