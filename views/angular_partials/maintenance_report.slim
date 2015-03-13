@@ -21,7 +21,6 @@
               .panel-heading ng-href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
                 h4.panel-title
                   span href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
-                    | {{item.action}} ({{item.item}})
+                    | {{actionAndPart(item)}}
               .panel-collapse.collapse id='collapse{{""+item.id}}'
-                .panel-body
-                  | {{item.itemDescription}}
+                .panel-body ng-bind-html='smartText(item)'

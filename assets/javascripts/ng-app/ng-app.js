@@ -1,6 +1,7 @@
 angular
   .module('myApp', [
-    'ui.router'//,
+    'ui.router',//,
+    'ngSanitize'
     // 'ct.ui.router.extras'
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',

@@ -12,6 +12,7 @@
 //
 //= require jquery.min
 //= require ../lib/angular/angular.js
+//= require ../lib/angular-sanitize/angular-sanitize.min.js
 //= require ../lib/angular-ui-router/release/angular-ui-router.min.js
 //= require ../lib/lodash/dist/lodash.underscore.min.js
 //= require ng-app/ng-app.js
