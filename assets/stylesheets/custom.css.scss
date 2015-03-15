@@ -3,6 +3,15 @@ body {
   font-size: 100%;
 }
 
+/* Functional */
+.strong {
+  font-weight: bold;
+}
+
+.block {
+  display: block;
+}
+
 .container-fluid a {
   text-decoration: none;
 }
@@ -28,3 +37,13 @@ body {
 .panel-body {
   font-size: 1.33em;
 }
+
+p {
+  font-size: 1.33em;
+}
+
+.center-justified {
+  text-align: justify;
+  margin: 0 auto;
+}
+
