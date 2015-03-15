@@ -28,3 +28,30 @@ body {
 .panel-body {
   font-size: 1.33em;
 }
+
+@media only screen and (min-width: 421px) {
+  .btn.btn-primary.btn-lg.show-report {
+    width: 60%;
+    padding: 9px;
+    margin-top: 1.5em;
+  }
+  .btn.btn-primary.btn-lg {
+   text-align: center;
+   width: 10%;
+   padding: 10px;
+   margin: 7px 0;
+   font-size: 2.2em;
+  }
+}
+
+@media only screen and (min-width: 0px) {
+  .btn.btn-primary.btn-lg {
+   text-align: center;
+   width: 30%;
+   padding: 9px;
+  }
+}
+  .text-center h1 {
+    font-size: 4.5em;
+    margin-bottom: 1em;
+  }
