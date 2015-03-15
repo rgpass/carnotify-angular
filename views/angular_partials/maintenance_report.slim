@@ -14,10 +14,10 @@
       .cd-timeline-block ng-repeat="interval in report"
         .cd-timeline-img.cd-picture
           h2
-            | {{interval[0].mileage/1000}}K
+            | {{interval.mileage/1000}}K
         .cd-timeline-content
-          .panel-group.tips id="#accordion{{""+interval[0].mileage}}"
-            .panel.panel-primary ng-repeat="item in interval[0].items"
+          .panel-group.tips id="#accordion{{""+interval.mileage}}"
+            .panel.panel-primary ng-repeat="item in interval.items"
               .panel-heading ng-href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
                 h4.panel-title
                   span href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
