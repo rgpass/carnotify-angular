@@ -5,6 +5,8 @@ Bundler.require
 require 'sinatra/asset_pipeline'
 
 class App < Sinatra::Base
+  api_url = ENV['api_url'] || 'http://localhost:3000/api/v1'
+
   # Logical paths to your assets
   set :assets_prefix, %w(assets vendor/assets)
 
@@ -17,7 +19,7 @@ class App < Sinatra::Base
   get '/api/v1/*' do
     end_point = params[:splat].first
     query_params = URI.encode_www_form(params)
-    HTTParty.get("https://carnotify-api.herokuapp.com/api/v1/#{end_point}?#{query_params}").to_json
+    HTTParty.get("#{api_url}/#{end_point}?#{query_params}").to_json
   end
 
   get '/partials/*' do
