@@ -5,7 +5,7 @@ Bundler.require
 require 'sinatra/asset_pipeline'
 
 class App < Sinatra::Base
-  api_url = ENV['api_url'] || 'http://localhost:3000/api/v1'
+  api_url = ENV['API_URL'] || 'http://localhost:3000/api/v1'
 
   # Logical paths to your assets
   set :assets_prefix, %w(assets vendor/assets)
