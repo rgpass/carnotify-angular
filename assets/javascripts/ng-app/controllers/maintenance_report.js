@@ -12,13 +12,13 @@ function ($scope, $rootScope, maintenanceReportService, $stateParams, $location,
 
   if (!$scope.report) {
     maintenanceReportService
-      .getReport($stateParams.year, $stateParams.makeNiceName, $stateParams.modelNiceName)
+      .getReport($stateParams)
       .success(alignVariables)
       .success(storeSearchParams)
   } else if (!isSameSearch()) {
     clearVariables();
     maintenanceReportService
-      .getReport($stateParams.year, $stateParams.makeNiceName, $stateParams.modelNiceName)
+      .getReport($stateParams)
       .success(alignVariables)
       .success(storeSearchParams)
   }
@@ -46,21 +46,27 @@ function ($scope, $rootScope, maintenanceReportService, $stateParams, $location,
     $scope.year = maintenanceReportService.year;
     $scope.make = maintenanceReportService.make;
     $scope.model = maintenanceReportService.model;
+    $scope.zip = maintenanceReportService.zip;
     $scope.modelYearId = maintenanceReportService.id;
     $scope.report = maintenanceReportService.report;
   }
 
   function isMissingParams() {
-    return !$stateParams.year || $stateParams.makeNiceName == "" || $stateParams.modelNiceName == "";
+    return !$stateParams.zip
+      || $stateParams.makeNiceName == ""
+      || $stateParams.modelNiceName == ""
+      || $stateParams.year == "";
   }
 
   function storeSearchParams() {
     maintenanceReportService.paramsYear = $stateParams.year;
     maintenanceReportService.makeNiceName = $stateParams.makeNiceName;
     maintenanceReportService.modelNiceName = $stateParams.modelNiceName;
+    maintenanceReportService.zip = $stateParams.zip;
     navigationService.year = $stateParams.year;
     navigationService.make = $stateParams.makeNiceName;
     navigationService.model = $stateParams.modelNiceName;
+    navigationService.zip = $stateParams.zip;
     $rootScope.$emit('carSelected');
   }
 

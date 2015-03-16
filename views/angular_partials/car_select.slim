@@ -22,9 +22,11 @@
       | {{model.name}}
   br
   br
+
+  input type='text' ng-model='zip' ng-change='validateZip()'
   br
 
-  a.btn.btn-primary.btn-lg ng-disabled='selectedModel == "model"' href='/#/report/{{selectedMake}}/{{selectedModel}}/{{selectedYear}}'
+  a.btn.btn-primary.btn-lg ng-disabled='selectedModel == "model" || !isValidZip' href='/#/report/{{selectedMake}}/{{selectedModel}}/{{selectedYear}}/{{zip}}'
     | Show me my maintenance report
 
   h2

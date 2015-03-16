@@ -28,4 +28,8 @@ angular.module('myApp')
     $scope.models = make.models;
   };
 
+  $scope.validateZip = function() {
+    $scope.isValidZip = String($scope.zip).match(/^\d{5}$/);
+  };
+
 }]);
