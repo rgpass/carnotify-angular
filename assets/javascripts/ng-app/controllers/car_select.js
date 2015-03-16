@@ -3,6 +3,8 @@ angular.module('myApp')
   ['$scope', 'carSelectService', 'navigationService',
   function ($scope, carSelectService, navigationService) {
 
+  setSelectNull();
+
   // DEFAULTS AND RANGES
   $scope.years = _.range(1990, 2016).reverse();
   $scope.selectedYear = 'year';
@@ -12,11 +14,13 @@ angular.module('myApp')
   $scope.updateMakes = function() {
     $scope.selectedMake = 'make';
     $scope.selectedModel = 'model';
+    $scope.waitIcon = false;
     $scope.makes = [];
     $scope.models = [];
     $scope.makes = carSelectService.grabMakesModels($scope.selectedYear)
       .success(function(data) {
         $scope.makes = data;
+        $scope.waitIcon = true;
       });
   };
 
@@ -27,5 +31,9 @@ angular.module('myApp')
     });
     $scope.models = make.models;
   };
+
+  function setSelectNull() {
+    $scope.waitIcon = carSelectService.waitIcon;
+  }
 
 }]);
