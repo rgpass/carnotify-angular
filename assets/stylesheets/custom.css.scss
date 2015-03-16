@@ -7,6 +7,16 @@ body {
   text-decoration: none;
 }
 
+.navbar-inverse .navbar-brand {
+  font-size: 1.69em;
+  font-weight: 500;
+}
+
+.navbar-inverse .navbar-collapse {
+  font-size: 1.42em;
+  font-weight: 300;
+}
+
 .panel {
   margin: 0px;
   border-width: 1px;
@@ -31,12 +41,12 @@ body {
 
 .text-center h1 {
   font-size: 4.5em;
-  margin-bottom: 60px;
+  margin: 55px 0;
 }
 
 .btn.btn-primary.btn-lg.show-report {
   padding: 9px;
-  margin-top: 60px;
+  margin-top: 68px;
 }
 .btn.btn-primary.btn-lg {
   padding: 10px;
