@@ -7,6 +7,7 @@ angular.module('myApp')
       $scope.year = navigationService.year;
       $scope.make = navigationService.make;
       $scope.model = navigationService.model;
+      $scope.zip = navigationService.zip;
     })
 
 }]);

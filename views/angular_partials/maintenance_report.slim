@@ -8,6 +8,9 @@
     .text-center
       h3
         | {{year}} {{make}} {{model}}
+      h4
+        | Costs estimated for zip code {{zip}}
+      br
       h4 Mileage
 
     section#cd-timeline.cd-container
@@ -19,8 +22,16 @@
           .panel-group.tips id="#accordion{{""+interval.mileage}}"
             .panel.panel-primary ng-repeat="item in interval.items"
               .panel-heading ng-href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
-                h4.panel-title
+                span.panel-title
                   span href="#collapse{{""+item.id}}" data-toggle="collapse" data-parent="#accordion"
                     | {{actionAndPart(item)}}
+                  span style='float:right'
+                    | {{itemTotalCost(item)}}
               .panel-collapse.collapse id='collapse{{""+item.id}}'
-                .panel-body ng-bind-html='smartText(item)'
+                .panel-body 
+                  div ng-bind-html='smartText(item)'
+                  br
+                  | {{itemCosts(item)}}
+
+          span.cd-date
+            | {{intervalCosts(interval)}}

@@ -12,20 +12,34 @@ function ($scope, $rootScope, maintenanceReportService, $stateParams, $location,
 
   if (!$scope.report) {
     maintenanceReportService
-      .getReport($stateParams.year, $stateParams.makeNiceName, $stateParams.modelNiceName)
+      .getReport($stateParams)
       .success(alignVariables)
       .success(storeSearchParams)
   } else if (!isSameSearch()) {
     clearVariables();
     maintenanceReportService
-      .getReport($stateParams.year, $stateParams.makeNiceName, $stateParams.modelNiceName)
+      .getReport($stateParams)
       .success(alignVariables)
       .success(storeSearchParams)
   }
 
-  $scope.actionAndPart = function (item) {
+  $scope.actionAndPart = function(item) {
     return item.action + " " + item.item.toLowerCase();
   };
+
+  $scope.itemTotalCost = function(item) {
+    return '$' + (item.labor_cost + item.parts_cost).toFixed(2);
+  }
+
+  $scope.itemCosts = function(item) {
+    return 'Labor: $' + item.labor_cost.toFixed(2) +
+      ', Parts: $' + item.parts_cost.toFixed(2)
+  }
+
+  $scope.intervalCosts = function(interval) {
+    return 'Labor: $' + interval.sum_labor_cost.toFixed(2) +
+      ', Parts: $' + interval.sum_parts_cost.toFixed(2)
+  }
 
   $scope.smartText = function(item) {
     var smartDescription  = item.itemDescription
@@ -46,21 +60,27 @@ function ($scope, $rootScope, maintenanceReportService, $stateParams, $location,
     $scope.year = maintenanceReportService.year;
     $scope.make = maintenanceReportService.make;
     $scope.model = maintenanceReportService.model;
+    $scope.zip = maintenanceReportService.zip;
     $scope.modelYearId = maintenanceReportService.id;
     $scope.report = maintenanceReportService.report;
   }
 
   function isMissingParams() {
-    return !$stateParams.year || $stateParams.makeNiceName == "" || $stateParams.modelNiceName == "";
+    return !$stateParams.zip
+      || $stateParams.makeNiceName == ""
+      || $stateParams.modelNiceName == ""
+      || $stateParams.year == "";
   }
 
   function storeSearchParams() {
     maintenanceReportService.paramsYear = $stateParams.year;
     maintenanceReportService.makeNiceName = $stateParams.makeNiceName;
     maintenanceReportService.modelNiceName = $stateParams.modelNiceName;
+    maintenanceReportService.zip = $stateParams.zip;
     navigationService.year = $stateParams.year;
     navigationService.make = $stateParams.makeNiceName;
     navigationService.model = $stateParams.modelNiceName;
+    navigationService.zip = $stateParams.zip;
     $rootScope.$emit('carSelected');
   }
 

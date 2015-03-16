@@ -17,7 +17,7 @@ angular
           templateUrl: 'partials/donations'
         })
         .state('maintenanceReport', {
-          url: '/report/:makeNiceName/:modelNiceName/:year',
+          url: '/report/:makeNiceName/:modelNiceName/:year/:zip',
           templateUrl: 'partials/maintenance_report',
           controller: 'maintenanceReportCtrl'
         })
