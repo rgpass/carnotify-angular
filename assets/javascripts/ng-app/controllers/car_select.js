@@ -3,7 +3,7 @@ angular.module('myApp')
   ['$scope', 'carSelectService', 'navigationService',
   function ($scope, carSelectService, navigationService) {
 
-  setSelectNull();
+  toggleWaitIcon();
 
   // DEFAULTS AND RANGES
   $scope.years = _.range(1990, 2016).reverse();
@@ -32,7 +32,7 @@ angular.module('myApp')
     $scope.models = make.models;
   };
 
-  function setSelectNull() {
+  function toggleWaitIcon() {
     $scope.waitIcon = carSelectService.waitIcon;
   }
 
