@@ -23,9 +23,23 @@ function ($scope, $rootScope, maintenanceReportService, $stateParams, $location,
       .success(storeSearchParams)
   }
 
-  $scope.actionAndPart = function (item) {
+  $scope.actionAndPart = function(item) {
     return item.action + " " + item.item.toLowerCase();
   };
+
+  $scope.itemTotalCost = function(item) {
+    return '$' + (item.labor_cost + item.parts_cost).toFixed(2);
+  }
+
+  $scope.itemCosts = function(item) {
+    return 'Labor: $' + item.labor_cost.toFixed(2) +
+      ', Parts: $' + item.parts_cost.toFixed(2)
+  }
+
+  $scope.intervalCosts = function(interval) {
+    return 'Labor: $' + interval.sum_labor_cost.toFixed(2) +
+      ', Parts: $' + interval.sum_parts_cost.toFixed(2)
+  }
 
   $scope.smartText = function(item) {
     var smartDescription  = item.itemDescription
