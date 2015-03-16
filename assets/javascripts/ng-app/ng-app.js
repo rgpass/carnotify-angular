@@ -21,6 +21,10 @@ angular
           templateUrl: 'partials/maintenance_report',
           controller: 'maintenanceReportCtrl'
         })
+        .state('benefits', {
+          url: '/benefits',
+          templateUrl: 'partials/benefits'
+        })
 
       // default fall back route
       $urlRouterProvider.otherwise('/');
