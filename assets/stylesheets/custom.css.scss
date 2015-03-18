@@ -50,3 +50,43 @@ p {
 .sources {
   list-style: none;
 }
+
+
+@media screen and (max-width: 1170px) {
+  .interval-number {
+    font-size: 75%;
+  }
+
+  #cd-timeline {
+    margin-top: 50px;
+  }
+
+  .mileage-title {
+    float: left;
+    padding-left: 4%;
+  }
+
+  .cost-panel {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    font-size: 25px;
+  }
+
+  .sub-title {
+    font-size: 18px;
+  }
+
+  .panel-title {
+    font-size: 9px;
+  }
+
+  .mileage-title {
+    float: left;
+    padding-left: 2%;
+  }
+}
+

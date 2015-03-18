@@ -1,21 +1,21 @@
 .text-center
-  h1 Maintenance Report
+  h1.header Maintenance Report
 #report
   div.text-center ng-hide='report'
     br
     i.fa.fa-spinner.fa-spin.fa-5x
   div ng-show='report'
     .text-center
-      h3
+      h3.sub-title
         | {{year}} {{make}} {{model}}
-      h4
-        | Costs estimated for zip code {{zip}}
       br
-      h4 Mileage
+      h4
+        | {{zip}}
+      h4.mileage-title Mileage
 
     section#cd-timeline.cd-container
       .cd-timeline-block ng-repeat="interval in report"
-        .cd-timeline-img.cd-picture
+        .cd-timeline-img.cd-picture.interval-number
           h2
             | {{interval.mileage/1000}}K
         .cd-timeline-content
@@ -28,10 +28,10 @@
                   span style='float:right'
                     | {{itemTotalCost(item)}}
               .panel-collapse.collapse id='collapse{{""+item.id}}'
-                .panel-body 
+                .panel-body
                   div ng-bind-html='smartText(item)'
                   br
                   | {{itemCosts(item)}}
 
-          span.cd-date
+          span.cd-date.cost-panel
             | {{intervalCosts(interval)}}
