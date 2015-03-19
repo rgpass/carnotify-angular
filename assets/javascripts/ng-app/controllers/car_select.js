@@ -3,6 +3,8 @@ angular.module('myApp')
   ['$scope', 'carSelectService', 'navigationService',
   function ($scope, carSelectService, navigationService) {
 
+  $scope.isLoading = true;
+
   // DEFAULTS AND RANGES
   $scope.years = _.range(1990, 2016).reverse();
   $scope.selectedYear = 'year';
@@ -12,11 +14,13 @@ angular.module('myApp')
   $scope.updateMakes = function() {
     $scope.selectedMake = 'make';
     $scope.selectedModel = 'model';
+    $scope.isLoading = false;
     $scope.makes = [];
     $scope.models = [];
     $scope.makes = carSelectService.grabMakesModels($scope.selectedYear)
       .success(function(data) {
         $scope.makes = data;
+        $scope.isLoading = true;
       });
   };
 
@@ -31,5 +35,4 @@ angular.module('myApp')
   $scope.validateZip = function() {
     $scope.isValidZip = String($scope.zip).match(/^\d{5}$/);
   };
-
 }]);
