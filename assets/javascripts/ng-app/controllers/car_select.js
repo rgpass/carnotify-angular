@@ -3,7 +3,7 @@ angular.module('myApp')
   ['$scope', 'carSelectService', 'navigationService',
   function ($scope, carSelectService, navigationService) {
 
-  toggleWaitIcon();
+  $scope.isLoading = true;
 
   // DEFAULTS AND RANGES
   $scope.years = _.range(1990, 2016).reverse();
@@ -14,13 +14,13 @@ angular.module('myApp')
   $scope.updateMakes = function() {
     $scope.selectedMake = 'make';
     $scope.selectedModel = 'model';
-    $scope.waitIcon = false;
+    $scope.isLoading = false;
     $scope.makes = [];
     $scope.models = [];
     $scope.makes = carSelectService.grabMakesModels($scope.selectedYear)
       .success(function(data) {
         $scope.makes = data;
-        $scope.waitIcon = true;
+        $scope.isLoading = true;
       });
   };
 
@@ -32,8 +32,7 @@ angular.module('myApp')
     $scope.models = make.models;
   };
 
-  function toggleWaitIcon() {
-    $scope.waitIcon = carSelectService.waitIcon;
-  }
-
+  $scope.validateZip = function() {
+    $scope.isValidZip = String($scope.zip).match(/^\d{5}$/);
+  };
 }]);

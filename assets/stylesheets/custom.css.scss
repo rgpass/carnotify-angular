@@ -3,18 +3,17 @@ body {
   font-size: 100%;
 }
 
+/* Functional */
+.strong {
+  font-weight: bold;
+}
+
+.block {
+  display: block;
+}
+
 .container-fluid a {
   text-decoration: none;
-}
-
-.navbar-inverse .navbar-brand {
-  font-size: 1.69em;
-  font-weight: 500;
-}
-
-.navbar-inverse .navbar-collapse {
-  font-size: 1.42em;
-  font-weight: 300;
 }
 
 .panel {
@@ -39,29 +38,67 @@ body {
   font-size: 1.33em;
 }
 
-.text-center h1 {
-  font-size: 4.5em;
-  margin: 55px 0;
-}
-
 .btn.btn-primary.btn-lg.show-report {
   padding: 9px;
   margin-top: 68px;
 }
-.btn.btn-primary.btn-lg {
-  padding: 10px;
-  font-size: 2.2em;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: -10px;
+
+// .btn.btn-primary.btn-lg. {
+//   padding: 10px;
+//   font-size: 2.2em;
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+//   margin-right: -10px;
+// }
+
+p {
+  font-size: 1.33em;
+}
+
+.center-justified {
+  text-align: justify;
+  margin: 0 auto;
+}
+
+.sources {
+  list-style: none;
 }
 
 
-@media (min-width: 992px) {
-  .col-md-offset-4 {
-    margin-left: 33.333333%;
+@media screen and (max-width: 1170px) {
+  .interval-number {
+    font-size: 75%;
+  }
+
+  #cd-timeline {
+    margin-top: 50px;
+  }
+
+  .mileage-title {
+    float: left;
+    padding-left: 4%;
+  }
+
+  .cost-panel {
+    margin-left: 10px;
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
+  .header {
+    font-size: 25px;
+  }
+
+  .sub-title {
+    font-size: 18px;
+  }
+
+  .panel-title {
+    font-size: 9px;
+  }
+
+  .mileage-title {
+    float: left;
+    padding-left: 2%;
+  }
 }
