@@ -38,6 +38,10 @@ body {
   font-size: 1.33em;
 }
 
+.car-select-title {
+  margin-bottom: 20px;
+}
+
 .btn.btn-primary.btn-lg.show-report {
   padding: 9px;
   margin-top: 68px;
@@ -49,6 +53,13 @@ select.btn.btn-primary.btn-lg {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: -10px;
+}
+
+.zipcode-box {
+  width: 34%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: -20px;
 }
 
 p {
